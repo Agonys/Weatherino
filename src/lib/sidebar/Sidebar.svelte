@@ -8,7 +8,6 @@
 
   import { ArrowRightIcon, LogoIcon } from "$lib/assets/icons";
 
-
   let isSidebarOpen = true;
 </script>
 
