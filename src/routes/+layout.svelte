@@ -1,9 +1,17 @@
 <script>
-  import Sidebar from "$lib/sidebar/Sidebar.svelte";
-  import "../styles/global.scss";
+  import { Sidebar } from "$lib/components";
+  import "../lib/styles/global.scss";
 </script>
 
 <Sidebar />
-<div class="content">
+<main class="content">
   <slot />
-</div>
+</main>
+
+<style>
+  .content {
+    display: flex;
+    width: 100%;
+    background-color: var(--white);
+  }
+</style>

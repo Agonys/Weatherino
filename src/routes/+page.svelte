@@ -1,9 +1,5 @@
 <script>
-
+  import { TopBar } from "$lib/components";
 </script>
 
-<div>cokolwiek</div>
-
-<style lang="scss">
-
-</style>
+<TopBar />
