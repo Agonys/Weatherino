@@ -1,6 +1,6 @@
 <script>
-  import { Sidebar } from "$lib/components";
-  import "../lib/styles/global.scss";
+  import { Sidebar } from "$lib/components/index.js";
+  import "$lib/styles/global.scss";
 </script>
 
 <Sidebar />
@@ -12,6 +12,7 @@
   .content {
     display: flex;
     width: 100%;
+    color: var(--black);
     background-color: var(--white);
   }
 </style>

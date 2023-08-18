@@ -79,7 +79,7 @@
       justify-content: space-between;
       overflow: hidden;
       background: var(--panel);
-      transition: width 0.3s ease-in-out;
+      transition: width var(--transition-ease);
     }
 
     .openCloseArrow {
@@ -95,7 +95,7 @@
       cursor: pointer;
 
       span {
-        transition: transform 0.3s ease-in-out;
+        transition: transform var(--transition-ease);
         display: flex;
         transform: rotate(0deg);
       }

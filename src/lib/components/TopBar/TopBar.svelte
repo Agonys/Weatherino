@@ -55,19 +55,18 @@
 
     .topbarLeftPanel {
       flex-direction: column;
-      gap: 8px;
       align-items: center;
       flex-shrink: 0;
 
       h2 {
-        font-size: 40px;
+        font-size: 30px;
         font-weight: 700;
         color: var(--black);
       }
 
       h4 {
         color: var(--dark-gray);
-        font-size: 26px;
+        font-size: 18px;
         font-weight: 500;
       }
     }
