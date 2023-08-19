@@ -2,7 +2,7 @@
   import { page } from "$app/stores";
   import { fade } from "svelte/transition";
 
-  import SidebarItem from "$lib/sidebar/SidebarItem.svelte";
+  import { SidebarItem } from "$lib/components";
 
   import { MAIN_NAVIGATION_ITEMS, SETTINGS_NAVIGATION_ITEMS } from "$lib/constants.js";
 
@@ -33,7 +33,6 @@
       </div>
     </div>
     <div class="lowerContent">
-      <span transition:fade>System</span>
       <div class="links">
         {#each SETTINGS_NAVIGATION_ITEMS as item}
           <SidebarItem
@@ -58,6 +57,7 @@
 <style lang="scss">
   .sidebar {
     display: flex;
+    position: relative;
 
     &.isOpen {
       .sidebarContent {
@@ -78,12 +78,15 @@
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
-      background: var(--sidebar);
-      transition: width 0.3s ease-in-out;
+      background: var(--panel);
+      transition: width var(--transition-ease);
     }
 
     .openCloseArrow {
-      background: var(--sidebar);
+      position: absolute;
+      right: 0;
+      transform: translateX(100%);
+      background: var(--panel);
       padding: 24px 10px 24px 8px;
       height: min-content;
       border-top-right-radius: 8px;
@@ -92,7 +95,7 @@
       cursor: pointer;
 
       span {
-        transition: transform 0.3s ease-in-out;
+        transition: transform var(--transition-ease);
         display: flex;
         transform: rotate(0deg);
       }

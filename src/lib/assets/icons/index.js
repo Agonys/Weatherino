@@ -6,6 +6,8 @@ import NavigateIcon from "$lib/assets/icons/Navigate.svg?raw";
 import CogIcon from "$lib/assets/icons/Cog.svg?raw";
 import SignOutIcon from "$lib/assets/icons/SignOut.svg?raw";
 import ArrowRightIcon from "$lib/assets/icons/ArrowRight.svg?raw";
+import AccountIcon from "$lib/assets/icons/Account.svg?raw";
+import SearchIcon from "$lib/assets/icons/Search.svg?raw";
 
 export {
   LogoIcon,
@@ -16,4 +18,6 @@ export {
   CogIcon,
   SignOutIcon,
   ArrowRightIcon,
+  AccountIcon,
+  SearchIcon,
 }

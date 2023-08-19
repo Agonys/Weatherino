@@ -28,7 +28,7 @@
     display: flex;
     gap: 8px;
     color: var(--gray);
-    transition: color 0.3s ease;
+    transition: color var(--transition-ease);
     text-decoration: none;
     align-items: center;
     font-weight: 500;
