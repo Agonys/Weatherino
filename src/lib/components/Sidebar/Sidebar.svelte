@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
   import { page } from "$app/stores";
   import { fade } from "svelte/transition";
 
   import { SidebarItem } from "$lib/components";
 
-  import { MAIN_NAVIGATION_ITEMS, SETTINGS_NAVIGATION_ITEMS } from "$lib/constants.js";
+  import { MAIN_NAVIGATION_ITEMS, SETTINGS_NAVIGATION_ITEMS } from "$lib/constants.ts";
 
   import { ArrowRightIcon, LogoIcon } from "$lib/assets/icons";
 

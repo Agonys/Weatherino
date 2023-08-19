@@ -1,15 +1,16 @@
-<script>
+<script lang="ts">
   import { browser } from "$app/environment";
 
   import { dateTimeFormat } from "$lib/utils";
 
   import { Search } from "$lib/components";
   import { AccountIcon } from "$lib/assets/icons";
+  import type { IDataTimeFormat } from "$lib/utils/dateTimeFormat";
 
   const currentDate = new Date();
   const userLang = browser ? navigator.language : "en-US";
 
-  const options = {
+  const options: IDataTimeFormat = {
     language: userLang,
     year: "numeric",
     month: "long",

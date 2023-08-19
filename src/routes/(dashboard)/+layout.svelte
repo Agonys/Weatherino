@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { Sidebar } from "$lib/components/index.js";
   import "$lib/styles/global.scss";
 </script>
