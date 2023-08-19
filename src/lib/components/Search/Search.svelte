@@ -5,6 +5,8 @@
   import { selectedLocation } from "$lib/client/stores/selectedLocation.ts";
   import type { LocationData } from "$lib/server/stores/locationCacheStore";
 
+  const debounceTime = 350;
+
   let searchValue = "";
   let suggestionsList: LocationData[] = [];
   let isSuggestionsListOpen = false;
@@ -24,7 +26,6 @@
     isSuggestionsListOpen = true;
   };
 
-  const debounceTime = 350;
   const debouncedSearch = debounce(searchLocations, debounceTime);
 
   const handleInputChange = () => {

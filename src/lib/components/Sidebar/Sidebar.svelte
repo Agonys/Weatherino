@@ -4,7 +4,7 @@
 
   import { SidebarItem } from "$lib/components";
 
-  import { MAIN_NAVIGATION_ITEMS, SETTINGS_NAVIGATION_ITEMS } from "$lib/constants.ts";
+  import { MAIN_NAVIGATION_ITEMS, SETTINGS_NAVIGATION_ITEMS } from "$lib/constants";
 
   import { ArrowRightIcon, LogoIcon } from "$lib/assets/icons";
 

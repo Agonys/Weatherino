@@ -1,39 +1,44 @@
-interface DebouncedFunction<
-  Args extends any[],
-  T extends (...args: Args) => ReturnType<T>
+interface IDebounce<
+	T extends (...args: any[]) => any
 > {
-  (...args: Args): void;
-  cancel: () => void;
+	(...args: Parameters<T>): Promise<ReturnType<T>>;
+	cancel: () => void;
 }
 
 function debounce<
-  Args extends any[],
-  F extends (...args: Args) => ReturnType<F>
+	T extends (...args: any[]) => any
 >(
-  func: F,
-  delay: number
-): DebouncedFunction<Args, F> {
-  let timeoutId: ReturnType<typeof setTimeout>;
-  let isPending = false;
+	func: T,
+	waitFor = 50,
+): IDebounce<T> {
+	let timeout: ReturnType<typeof setTimeout>;
+	let isPending = false;
+	let pendingPromise: Promise<ReturnType<T>> | null;
 
-  const debouncedFunction = function (...args: Args) {
-    clearTimeout(timeoutId);
-    isPending = true;
+	const debouncedFunction: IDebounce<T> = (...args: Parameters<T>) => {
+		clearTimeout(timeout);
+		pendingPromise = null;
 
-    timeoutId = setTimeout(() => {
-      isPending = false;
-      func.apply(null, args);
-    }, delay);
-  };
+		isPending = true;
+		pendingPromise = new Promise<ReturnType<T>>((resolve) => {
+			timeout = setTimeout(() => {
+				isPending = false;
+				resolve(func(...args));
+			}, waitFor);
+		});
 
-  debouncedFunction.cancel = () => {
-    if (isPending) {
-      clearTimeout(timeoutId);
-      isPending = false;
-    }
-  };
+		return pendingPromise;
+	}
 
-  return debouncedFunction;
+	debouncedFunction.cancel = () => {
+		if (isPending) {
+			clearTimeout(timeout);
+			isPending = false;
+			pendingPromise = null;
+		}
+	}
+
+	return debouncedFunction;
 }
 
 export default debounce;
