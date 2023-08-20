@@ -1,14 +1,17 @@
-<script>
+<script lang="ts">
   import { browser } from "$app/environment";
   import { SearchIcon } from "$lib/assets/icons";
   import { debounce } from "$lib/utils";
-  import { selectedLocation } from "$lib/client/stores/selectedLocation";
+  import { selectedLocation } from "$lib/client/stores/selectedLocation.ts";
+  import type { LocationData } from "$lib/server/stores/locationCacheStore";
+
+  const debounceTime = 350;
 
   let searchValue = "";
-  let suggestionsList = [];
+  let suggestionsList: LocationData[] = [];
   let isSuggestionsListOpen = false;
 
-  const searchLocations = async (value) => {
+  const searchLocations = async (value: string) => {
     const userLang = browser ? navigator.language.split("-")[0] : "en-US";
 
     const response = await fetch("/api/v1/locations", {
@@ -23,7 +26,6 @@
     isSuggestionsListOpen = true;
   };
 
-  const debounceTime = 350;
   const debouncedSearch = debounce(searchLocations, debounceTime);
 
   const handleInputChange = () => {

@@ -1,11 +1,12 @@
 import { error, json } from '@sveltejs/kit';
-import { locationCacheStore } from '$lib/server/stores/locationCacheStore';
+import { locationCacheStore, type LocationData } from '$lib/server/stores/locationCacheStore';
 
-export function GET() {
+import type { RequestHandler } from './$types';
+
+export const GET: RequestHandler = () => {
 	throw error(401, 'Unauthorized');
-}
-
-export async function POST({ request, fetch }) {
+};
+export const POST: RequestHandler = async ({ request, fetch }) => {
 	const params = await request.json();
 	const query = params.query.toLowerCase();
 	const language = params.language.toLowerCase();
@@ -24,9 +25,9 @@ export async function POST({ request, fetch }) {
 	);
 	const data = await apiData.json();
 	const formattedData =
-		data.results?.map((location) => {
+		data.results?.map((location: LocationData) => {
 			const { name, id, latitude, longitude, country } = location;
-			return { id, name, country, latitude, longitude };
+			return { id, name, country, latitude, longitude } as LocationData;
 		}) || [];
 
 	console.log('POST api/v1/locations: using external API.\n', JSON.stringify({ query, language }, null, 2));
